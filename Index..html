@@ -1,1 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venearci Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+    <!-- Pantalla de Carga (Splash Screen) -->
+    <div id="sec-splash" class="splash-container">
+        <div class="logo-animado-box">
+            <img src="img/logo-venearci.png" alt="Venearci Logo" class="logo-completo" onerror="this.src='https://placehold.co/300x300/558296/ffffff?text=VENEARCI'">
+            <h1 class="texto-bajo-logo">VENEARCI SERVICES</h1>
+            <p class="subtexto-bajo-logo">Soluciones Inmediatas</p>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="img/logo-venearci.png" alt="Venearci Services Logo" class="brand-logo" onerror="this.src='https://placehold.co/150x150/558296/ffffff?text=VENEARCI'">
+        </div>
+        <h1>Venearci Services</h1>
+        <p>Soluciones Profesionales y Alianzas Comerciales</p>
+    </header>
+
+    <main class="container">
+        
+        <!-- Módulo de Autenticación Unificado -->
+        <section class="card" id="sec-auth">
+            <div id="auth-forms-container" class="auth-card">
+                
+                <h2 id="auth-title">Iniciar Sesión</h2>
+                <p id="auth-subtitle" class="subtitle">Accede de forma rápida para gestionar tus servicios</p>
+
+                <!-- Botón de Google -->
+               <!-- Botón de Google Corregido -->
+               <center>
+<button id="btn-login-google" class="btn-social.google">
+    <img src="https://www.google.com/favicon.ico" alt="Google" width="18" style="margin-right: 8px; vertical-align: middle;"> Continuar con Google
+</button>
+</center>
+
+                <div class="divider-text"><span>ó usa tu correo</span></div>
+
+                <!-- Formulario Dinámico Integrado -->
+                <form id="form-auth-tradicional">
+                    <div class="form-group id-oculto" id="group-nombre">
+                        <label for="auth-nombre">Nombre Completo:</label>
+                        <input type="text" id="auth-nombre" placeholder="Ej. Ángel Arcila">
+                    </div>
+                    
+                    <div class="form-group id-oculto" id="group-telefono">
+                        <label for="auth-telefono">Número de WhatsApp:</label>
+                        <input type="tel" id="auth-telefono" placeholder="Ej. 584125556677">
+                        <small style="color: #64748b; display: block; margin-top: 4px;">Código de país sin el signo + (Ej: 58 para Venezuela).</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="auth-email">Correo Electrónico:</label>
+                        <input type="email" id="auth-email" required placeholder="ejemplo@correo.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="auth-password">Contraseña:</label>
+                        <input type="password" id="auth-password" required placeholder="••••••••">
+                    </div>
+
+                    <!-- Enlace de Recuperación de Credenciales -->
+                    <div class="form-options">
+                        <a href="#" id="btn-olvide-contrasena" style="display: block; text-align: right; margin-bottom: 15px; color: #4b7bec; text-decoration: none; font-size: 14px; font-weight: 500;">¿Olvidó su contraseña?</a>
+                    </div>
+
+                    <button type="submit" id="btn-auth-submit" class="btn">Ingresar al Sistema</button>
+                </form>
+
+                <!-- Alternador de Modo Dinámico -->
+                <p class="switch-auth-text" style="margin-top: 20px; text-align: center;">
+                    <span id="text-toggle-prompt">¿No tienes una cuenta aún?</span> 
+                    <a href="#" id="toggle-auth-mode" style="color: #4b7bec; font-weight: bold; text-decoration: underline;">Regístrate aquí</a>
+                </p>
+            </div>
+
+            <!-- Información de Sesión Activa de Usuario -->
+            <div id="user-logged-info" class="id-oculto">
+                <div class="user-profile-nav">
+                    <div class="badge-rol" id="user-badge-rol">Cliente</div>
+                    <div>
+                        <p style="margin: 0;">Usuario: <strong id="user-display-name"></strong></p>
+                        <small style="display: block; color: #cbd5e1;" id="user-display-meta"></small>
+                    </div>
+                </div>
+                <button id="btn-logout" class="btn-link">Cerrar Sesión Activa</button>
+            </div>
+        </section>
+
+        <!-- Modal de Completación de Perfil Obligatorio -->
+        <div id="modal-completar-perfil" class="modal id-oculto">
+            <div class="modal-content">
+                <h3>¡Paso Obligatorio!</h3>
+                <p>Para procesar y despachar tus presupuestos necesitamos tu número de WhatsApp.</p>
+                <div class="form-group">
+                    <label for="modal-telefono">Número de WhatsApp:</label>
+                    <input type="tel" id="modal-telefono" placeholder="Ej. 584125556677" required>
+                </div>
+                <button id="btn-guardar-modal-phone" class="btn">Guardar Teléfono</button>
+            </div>
+        </div>
+
+        <!-- Panel de Administración del CEO -->
+        <section class="card id-oculto" id="panel-admin">
+            <div class="admin-header">
+                <h2>⚙️ Panel de Control de Operaciones (CEO)</h2>
+                <p class="subtitle" style="color:#d97706;">Venearci Group Global Administration</p>
+            </div>
+            <hr>
+            
+            <div class="admin-grid">
+                <div class="admin-box">
+                    <h3>👥 Registrar / Editar Especialista</h3>
+                    
+                    <div class="form-group" style="margin-bottom: 15px; background-color: #f1f5f9; padding: 10px; border-radius: 6px;">
+                        <label for="adm-select-editar-empleado" style="color: #0f172a; font-weight: bold;">🔍 Selecciona para Modificar Existente:</label>
+                        <select id="adm-select-editar-empleado">
+                            <option value="">-- Seleccionar Especialista para Editar --</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adm-emp-nombre">Nombre Completo:</label>
+                        <input type="text" id="adm-emp-nombre" placeholder="Ej. Ángel Arcila" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adm-emp-correo">Correo Electrónico:</label>
+                        <input type="email" id="adm-emp-correo" placeholder="ejemplo@venearci.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adm-emp-rubro">Rubro / Especialidad:</label>
+                        <select id="adm-emp-rubro">
+                            <option value="Plomería">Plomería</option>
+                            <option value="Electricidad">Electricidad</option>
+                            <option value="Albañilería">Albañilería</option>
+                            <option value="Refrigeración">Refrigeración</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adm-emp-tlf">Teléfono / WhatsApp:</label>
+                        <input type="tel" id="adm-emp-tlf" placeholder="Ej. 584120000000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adm-emp-foto">URL de Imagen de Perfil (Opcional):</label>
+                        <input type="text" id="adm-emp-foto" placeholder="https://enlace-de-la-foto.jpg">
+                        <small style="color: #64748b; display: block; margin-top: 4px;">Pega un enlace de imagen de internet o déjalo vacío para usar el avatar por defecto.</small>
+                    </div>
+
+                    <button type="button" id="btn-adm-add-empleado" class="btn btn-success" style="width: 100%;">Dar de Alta Especialista</button>
+                    
+                    <button type="button" id="btn-adm-cancelar-edicion" class="id-oculto" style="background-color: #ef4444; color: white; margin-top: 8px; padding: 10px; border-radius: 8px; width: 100%; border: none; cursor: pointer;">
+                        Cancelar Edición (Volver a Registro Nuevo)
+                    </button>
+                </div>
+
+                <div class="admin-box">
+                    <h3>💰 Editor de Tarifas (Mano de Obra)</h3>
+                    <div class="form-group">
+                        <label>Seleccionar Trabajo:</label>
+                        <select id="adm-select-tarea-precio"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nuevo Costo Base ($):</label>
+                        <input type="number" step="0.01" id="adm-input-precio-tarea">
+                    </div>
+                    <button id="btn-adm-update-precio" class="btn">Actualizar Tarifa Base</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel del Especialista Operativo -->
+        <section class="card id-oculto" id="panel-empleado">
+            <h2>Panel Operativo del Especialista</h2>
+            <div class="profile-card">
+                <img id="emp-panel-foto" src="https://placehold.co/150x150/6b5e3d/ffffff?text=E" alt="Foto Perfil" class="emp-foto-large">
+                <h3 id="emp-panel-nombre">--</h3>
+                <p id="emp-panel-rubro">Especialidad: --</p>
+                <div class="status-toggle-container" style="margin-top:15px;">
+                    <button id="btn-toggle-dispo" class="btn btn-secundario">Estado: Disponible ✔️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Solicitud de Servicios -->
+        <section class="card id-oculto" id="sec-servicio">
+            <h2>1. ¿Qué asistencia técnica requieres hoy?</h2>
+            <div class="form-group">
+                <label for="select-categoria">Rubro de Asistencia:</label>
+                <select id="select-categoria">
+                    <option value="">-- Elige un Rubro --</option>
+                    <option value="Plomería">Plomería</option>
+                    <option value="Electricidad">Electricidad</option>
+                    <option value="Albañilería">Albañilería</option>
+                    <option value="Refrigeración">Aires Acondicionados y Refrigeración</option>
+                </select>
+            </div>
+
+            <div id="area-trabajos-especificos" class="form-group id-oculto">
+                <label for="select-trabajo">Trabajo específico a realizar:</label>
+                <select id="select-trabajo"></select>
+            </div>
+
+            <div id="area-materiales-aliados" class="form-group id-oculto check-material-box">
+                <h3>🛒 Alianza Comercial: Productos Disponibles</h3>
+                <p class="subtitle" style="margin-bottom:10px; color: #1e293b;">¿Deseas anexar los repuestos originales certificados a tu orden?</p>
+                <div id="contenedor-producto-aliado"></div>
+            </div>
+
+            <div id="area-empleados" class="id-oculto">
+                <h3>2. Asignación del Técnico</h3>
+                <div class="asignacion-opciones">
+                    <button id="btn-asignar-aleatorio" class="btn btn-secundario">Asignar Técnico de Guardia Automático</button>
+                </div>
+                <p class="or-text">ó selecciona el de tu preferencia:</p>
+                <div id="lista-empleados" class="grid-empleados"></div>
+            </div>
+        </section>
+
+        <!-- Modal Desplegable de Facturación Dinámica -->
+        <div id="modal-factura-flotante" class="modal id-oculto">
+            <div class="modal-content modal-factura-size">
+                <span id="btn-cerrar-modal-factura" class="close-modal-btn">&times;</span>
+                
+                <div id="area-impresion-factura">
+                    <div id="factura-presupuesto" class="factura">
+                        <h3>📄 PRESUPUESTO DE SERVICIO</h3>
+                        <p style="text-align:center; font-size:0.85rem; margin-top:-10px;"><em>Venearci Services S.A.</em></p>
+                        
+                        <div class="factura-meta-tiempo" style="background: #f8fafc; padding: 6px; text-align: center; border-radius: 4px; margin-bottom: 10px;">
+                            <p style="margin: 0; font-size: 0.9rem;"><strong>Fecha y Hora Emisión:</strong> <span id="pre-fecha" style="color:#1e3a8a; font-weight: bold;">Cargando...</span></p>
+                        </div>
+                        <hr>
+                        <div class="factura-linea"><strong>Cliente:</strong> <span id="pre-cliente"></span></div>
+                        <div class="factura-linea"><strong>Técnico Asignado:</strong> <span id="pre-empleado"></span></div>
+                        <div class="factura-linea"><strong>Mano de Obra:</strong> <span id="pre-tarea"></span></div>
+                        <div class="factura-linea" id="pre-linea-material"><strong>Materiales Anexos:</strong> <span id="pre-material">Ninguno</span></div>
+                        <hr>
+                        <div class="factura-linea"><strong>Sub-Total Líquido:</strong> $<span id="pre-subtotal">0.00</span></div>
+                        <div class="factura-linea total"><strong>Total Estimado (IVA Inc. 16%):</strong> $<span id="pre-total">0.00</span></div>
+                    </div>
+                </div>
+
+                <div class="modal-factura-actions">
+                    <button id="btn-descargar-factura" class="btn btn-descargar">📥 Descargar / Guardar PDF</button>
+                    <button id="btn-confirmar-servicio" class="btn btn-success">Confirmar Orden y Despachar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmación de Envío Sincronizado -->
+        <section class="card id-oculto" id="sec-post-trabajo">
+            <h2>3. Despliegue en Progreso</h2>
+            <p>Tu orden ha sido procesada y transmitida a la central de soporte.</p>
+        </section>
+
+    </main>
+
+    <script type="module" src="app14.js"></script>
+</body>
+  </html>
+                      
